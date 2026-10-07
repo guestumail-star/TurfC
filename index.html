@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Turf Scorecards</title>
+    <meta name="description" content="A professional cricket scoring application with live scorecards, match history, and player and team analytics." />
+    <meta property="og:title" content="Turf Scorecards" />
+    <meta property="og:description" content="A professional cricket scoring application with live scorecards, match history, and player and team analytics." />
+    <script>
+      (function() {
+        try {
+          const originalFetch = window.fetch;
+          let customFetch = originalFetch;
+          Object.defineProperty(window, 'fetch', {
+            get() {
+              return customFetch;
+            },
+            set(val) {
+              customFetch = val;
+            },
+            configurable: true,
+            enumerable: true
+          });
+        } catch (e) {
+          try {
+            const originalFetch = Window.prototype.fetch;
+            let customFetch = originalFetch;
+            Object.defineProperty(Window.prototype, 'fetch', {
+              get() {
+                return customFetch;
+              },
+              set(val) {
+                customFetch = val;
+              },
+              configurable: true,
+              enumerable: true
+            });
+          } catch (err) {
+            console.warn("Could not patch window.fetch setter:", err);
+          }
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    
+  </body>
+</html>
+

@@ -1,0 +1,85 @@
+{
+  "entities": {
+    "Player": {
+      "title": "Player",
+      "description": "A cricket player with stats",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string" },
+        "jerseyNo": { "type": "string" },
+        "age": { "type": "number" },
+        "stats": {
+          "type": "object",
+          "properties": {
+            "matches": { "type": "number" },
+            "runs": { "type": "number" },
+            "balls": { "type": "number" },
+            "wickets": { "type": "number" },
+            "fifties": { "type": "number" },
+            "hundreds": { "type": "number" },
+            "fours": { "type": "number" },
+            "sixes": { "type": "number" }
+          }
+        }
+      },
+      "required": ["id", "name", "role", "jerseyNo", "stats"]
+    },
+    "Team": {
+      "title": "Team",
+      "description": "A cricket team with a roster of player IDs",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "playerIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["id", "name", "playerIds"]
+    },
+    "Match": {
+      "title": "Match",
+      "description": "A live or completed cricket match",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "team1Id": { "type": "string" },
+        "team2Id": { "type": "string" },
+        "team1Name": { "type": "string" },
+        "team2Name": { "type": "string" },
+        "totalOvers": { "type": "number" },
+        "status": { "type": "string" },
+        "battingFirstId": { "type": "string" },
+        "battingFirstName": { "type": "string" },
+        "fieldingFirstId": { "type": "string" },
+        "fieldingFirstName": { "type": "string" },
+        "currentInnings": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "completedAt": { "type": "string" },
+        "result": { "type": "string" },
+        "innings": {
+          "type": "array",
+          "items": { "type": "object" }
+        }
+      },
+      "required": ["id", "team1Id", "team2Id", "team1Name", "team2Name", "totalOvers", "status", "battingFirstId", "battingFirstName", "fieldingFirstId", "fieldingFirstName", "currentInnings", "innings", "createdAt", "result"]
+    }
+  },
+  "firestore": {
+    "players": {
+      "schema": "Player",
+      "description": "Cricket players list"
+    },
+    "teams": {
+      "schema": "Team",
+      "description": "Cricket teams list"
+    },
+    "matches": {
+      "schema": "Match",
+      "description": "Matches scoring list"
+    }
+  }
+}

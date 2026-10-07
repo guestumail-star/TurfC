@@ -1,0 +1,8 @@
+{
+  "name": "Turf Scorecards",
+  "description": "A professional cricket scoring application with live scorecards, match history, and player and team analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
